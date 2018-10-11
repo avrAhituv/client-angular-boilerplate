@@ -1,0 +1,16 @@
+.control-label{
+    font-weight: bold;
+}
+.settingsPage{
+    margin: 10px 25px;
+}
+.modal-header,.modal-title
+,.modal-body,.modal-footer{
+    padding: 5px 10px;
+}
+.modal-title{
+    font-weight: bold;
+}
+.modal-footer .btn{
+    margin: 0 10px;
+}

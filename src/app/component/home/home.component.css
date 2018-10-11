@@ -1,0 +1,19 @@
+.csv-file-chooser-section {
+    padding: 10px;
+    margin: 5%;
+    text-align: center;
+  }
+  
+  .csv-result-table {
+    margin: 5%;
+  }
+  
+  table, th, td {
+     border: 1px solid black;
+     padding: 3px 10px;
+  }
+  .import-csv-section{
+    padding: 10px;
+    margin: 5%;
+    border-bottom: 1px solid #afafaf;
+  }

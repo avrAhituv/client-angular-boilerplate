@@ -1,0 +1,23 @@
+.login-form{
+    border: #35296b solid 5px;
+    padding: 15px 20px;
+    box-shadow: 10px 10px 20px rgba(0,0,0,0.3);
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: 5%;
+    min-width: 300px;
+}
+
+.login-comp{
+    margin: 0 auto;    
+    text-align: center;
+    width: 100%;
+    
+}
+.form-group{
+    text-align: right;
+}
+
+
+
+

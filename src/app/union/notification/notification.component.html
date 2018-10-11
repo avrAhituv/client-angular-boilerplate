@@ -1,0 +1,11 @@
+<div *ngIf="NotifyService.notifications.length" class="notifications-container">
+  <div  *ngFor="let notify of NotifyService.notifications" [className]="notify.Classes">
+    <h4 *ngIf="notify.Title"><strong>{{notify.Title}}</strong></h4>
+    <p class="notification-content">
+        {{notify.Message}}
+    </p>   
+  </div>
+</div>  
+ 
+    
+ 

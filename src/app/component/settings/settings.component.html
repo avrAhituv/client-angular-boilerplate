@@ -1,0 +1,54 @@
+<div class="settingsPage">
+  <div>
+      <legend>ניהול משתמש</legend>      
+  </div>
+  
+  <section class="password">
+      <button type="button" class="btn btn-primary" (click)="openModal(template)">שינוי סיסמה</button>
+      <ng-template #template>
+          <div class="modal-header">
+              <button type="button" class="close pull-left" aria-label="Close" (click)="modalRef.hide()">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            <h4 class="modal-title">שינוי סיסמה</h4>           
+          </div>
+          <div class="modal-body">
+            <div class="row col-sm-12">
+              <form class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label" for="oldPassword">סיסמה ישנה: </label>
+                    <div class="col-sm-8">
+                      <input class="form-control" type="text"  name="oldPassword" [(ngModel)]="changePassword.oldPassword"  />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label" for="newPassword">סיסמה חדשה: </label>
+                    <div class="col-sm-8">
+                        <input class="form-control " type="text" name="newPassword" [(ngModel)]="changePassword.newPassword" aria-describedby="helpBlock"  />
+                        <p id="helpBlock2" class="help-block">הסיסמה חייבת להיות לפחות באורך של 6 תווים.<br/>
+                            כמו כן, היא חייבת להיות באנגלית, ולכלול אותיות גדולות וקטנות, מספרים וסמלים כגון #.</p> 
+                    </div>                                   
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label" for="confirmPassword">אימות סיסמה: </label>
+                    <div class="col-sm-8">
+                      <input class="form-control"  type="text"  name="confirmPassword" [(ngModel)]="changePassword.confirmPassword" />
+                    </div>
+                  </div>
+              </form>
+            </div>           
+          
+          </div>
+          <div class="modal-footer">
+              <button type="button"  class="btn btn-danger pull-left" aria-label="Close" (click)="modalRef.hide()">
+                <span class="glyphicon glyphicon-remove"></span>
+                  ביטול</button>
+              <button type="button"  class="btn btn-primary pull-left" (click)="changePass()">
+                  <span class="glyphicon glyphicon-ok"></span>
+                 שנה סיסמה                
+              </button>
+             
+          </div>
+        </ng-template>
+  </section>
+</div>
