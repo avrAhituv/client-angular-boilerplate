@@ -6,9 +6,9 @@ import { HttpHeaders, HttpClient, HttpEvent, HttpRequest } from '@angular/common
 
 @Injectable()
 export class FilesService {
-  private devUrl ='http://localhost:59253/api' //Members
-  private serverUrl ='https://api.sbmo.co.il/api'
-  private emailUrl =(config.isProd?this.serverUrl:this.devUrl) + '/Email' 
+  private devUrl ='' 
+  private serverUrl =''
+  private filesUrl =(config.isProd?this.serverUrl:this.devUrl) + '/files' 
   
   private headers:HttpHeaders
 
