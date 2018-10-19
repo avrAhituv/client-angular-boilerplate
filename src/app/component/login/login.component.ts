@@ -27,7 +27,8 @@ export class LoginComponent implements OnInit {
     this.isLoading = true
     let loginData = 'grant_type=password&username='+ this.username +
       '&password='+ this.password   
-    this.loginService.login(loginData, this.username)
+    let isLogin = this.loginService.login(loginData, this.username)
+   
   }
  
 

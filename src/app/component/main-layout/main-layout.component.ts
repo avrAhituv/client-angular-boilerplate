@@ -24,7 +24,7 @@ export class MainLayoutComponent implements OnInit {
   ngOnInit() {
   }
 
-  toggleState() { // click handler
+  toggleState() { 
     let bool = this.isIn;
     this.isIn = bool === false ? true : false;
   }

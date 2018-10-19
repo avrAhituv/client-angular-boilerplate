@@ -46,7 +46,7 @@ export class LoginService {
       this.router.navigate(['/']) 
       },
       err =>{
-        this.notify.add(new Notification('אירעה שגיאת רשת','שגיאה','danger')) 
+        this.notify.add(new Notification('אירעה שגיאת רשת','שגיאה','danger'))        
       }
     )
   }

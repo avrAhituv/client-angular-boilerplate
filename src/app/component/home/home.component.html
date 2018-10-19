@@ -1,55 +1,9 @@
-<section class="sender-section">
+<section class="body-section">
 <div class="panel panel-primary">
-  <div class="panel-heading">שליחת דוא"ל</div>
+  <div class="panel-heading">Welcome to angular client boilerplate</div>
   <div class="panel-body">
-    <form class="form-horizontal" enctype="multipart/form-data" >
-      <div class="form-group">
-        <label  class="col-sm-2 control-label" for="select-group-list">בחר רשימת תפוצה</label>
-        <div  class="col-sm-7">
-          <select *ngIf="selectList && selectList.length" name="select-group-list" [(ngModel)]="mailForm.group" class="col-sm-6 form-control" >
-            <option *ngFor="let o of selectList" [ngValue]="o.id">{{o.name}}</option> 
-          </select>
-        </div>        
-    </div>
-      <div class="form-group">
-        <label class="col-sm-2 control-label" for="groupName">נושא:</label>
-        <div class="col-sm-7">
-          <input class="form-control" type="text"  name="subject" [(ngModel)]="mailForm.subject"  />
-        </div>
-    </div>  
-    <div class="form-group">
-        <label class="col-sm-2 control-label" for="groupName">תוכן: </label>
-        <div class="col-sm-7">
-          <textarea class="form-control" rows="10" name="body" [(ngModel)]="mailForm.body"  >
-          </textarea>
-        </div>
-        <div class="col-sm-3 help">
-          <strong><u>משתנים דינמיים:</u></strong> <br/>
-          %recipient.first% = שם פרטי<br/>
-          %recipient.last% = שם משפחה
-        </div>
-    </div>    
-    <div class="form-group">
-      <label class="col-sm-3 control-label" for="groupName">בחר קובץ</label>
-      <div class="btn btn-primary" (click)="addFile()">
-        <input class="form-control" style="display: none" type="file" #file name="file"  (change)="selectFile($event)"   />
-        <span *ngIf="selectedFiles"> {{ selectedFiles[0].name }} </span>
-        <span *ngIf="!selectedFiles">נא ללחוץ לבחירת קובץ</span>
-      </div>
-  </div> 
-  <div class="pull-left">
-    <button class="btn btn-success" [disabled]="inSend || !mailForm.group || !mailForm.subject" (click)="sendMail()">      
-      <span class="glyphicon glyphicon-send" aria-hidden="true"> </span>       
-        שליחת הודעה 
-    </button>
-  </div>            
-  </form>
-  <div *ngIf="currentFileUpload" class="progress">
-    <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" 
-    attr.aria-valuenow="{{progress.percentage}}"
-      aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width:progress.percentage+'%'}">
-      {{progress.percentage}}% </div>
-  </div>
+    This boilerplate is rtl template for hebrew client and more.
+
   </div>
 </div>
 
