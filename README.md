@@ -2,7 +2,9 @@
 
 This Project is providers for you boilerplate with login and router ready to use, and all you have left is to build the logic of the application.
 
-the project is based on angular and bootstrap.
+The project is based on angular and bootstrap.
+
+This project is content notification-component and service, for push notification to client. and is content pagination-component for tables and lists.
 
 the html layout is RTL template for hebrew and arabic app.
 
@@ -24,13 +26,6 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
 ## Further help
 
