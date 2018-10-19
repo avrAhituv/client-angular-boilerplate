@@ -1,19 +1,19 @@
-.csv-file-chooser-section {
+
+  textarea,input{
+    background: #fafafa;
+  }
+  .sender-section{
     padding: 10px;
-    margin: 5%;
-    text-align: center;
+    margin: 10px 25px;
+    font-size: 140%;
   }
-  
-  .csv-result-table {
-    margin: 5%;
+  .panel-heading{
+    color: white;
+    font-weight: bold;
+    font-size: 100%;
   }
-  
-  table, th, td {
-     border: 1px solid black;
-     padding: 3px 10px;
-  }
-  .import-csv-section{
-    padding: 10px;
-    margin: 5%;
-    border-bottom: 1px solid #afafaf;
+  .help{
+    background: #fafafa;
+    margin: 0 0 0 10px;
+    width: 24%;
   }

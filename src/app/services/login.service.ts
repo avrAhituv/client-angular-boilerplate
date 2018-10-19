@@ -12,18 +12,24 @@ import { Notification } from '../model/Notification';
 @Injectable()
 export class LoginService {
   private isProd: boolean = config.isProd//false//true//
-  devurl: string = 'http://papi.ahituv.net/token'
-  //devurl:string ='http://localhost:56534/token'
-  prodURL: string = '/token'
+  devurl: string = 'http://localhost:59253/token' 
+  prodURL: string = 'https://api.sbmo.co.il/token'
 
-  accountUrlDev: string = 'http://papi.ahituv.net/api/Account/'
-  accounUrlProd: string = 'api/Account/'
+  accountUrlDev: string = 'http://localhost:59253/api/Account/'
+  accounUrlProd: string = 'https://api.sbmo.co.il/api/Account/'
   _headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
 
   private loggedIn = new BehaviorSubject<boolean>(false); 
 
   get isLoggedIn() {
-    return this.loggedIn.asObservable(); 
+    let token= localStorage.getItem('tokenKey')
+    let expires_in =localStorage.getItem('expires_in')
+    if(token && expires_in){
+      if(JSON.parse(expires_in) > Date.now() / 1000)
+      this.loggedIn.next(true)
+      return this.loggedIn.asObservable()
+    }
+    return this.loggedIn.asObservable()
   }
 
   constructor(private http: HttpClient, private notify: NotificationService,private router:Router) { }
@@ -32,7 +38,13 @@ export class LoginService {
     let url = this.isProd ? this.prodURL : this.devurl
     return this.http.post(url, loginData, { headers: this._headers }).subscribe(data => {
       let token:any = data
+      // console.log(token)
+      let now = new Date()
+      let exp = now.setSeconds(token.expires_in)
+      // console.log(exp)
+      // console.log(new Date(exp))
       localStorage.setItem('tokenKey', token.access_token)
+      localStorage.setItem('expires_in', exp.toString())
       localStorage.setItem('un', username)  
       this.loggedIn.next(true)
       this.router.navigate(['/']) 
@@ -50,6 +62,7 @@ export class LoginService {
     let headers = this._headers.set('Authorization', 'Bearer ' + token)
     this.http.post(url + 'Logout', {}, { headers: headers })
     localStorage.removeItem('tokenKey')
+    localStorage.removeItem('expires_in')
     localStorage.removeItem('un')
     localStorage.clear()    
     this.loggedIn.next(false)

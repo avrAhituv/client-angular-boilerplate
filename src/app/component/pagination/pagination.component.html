@@ -1,0 +1,32 @@
+<div class="page-controls  no-print">
+<!-- pager -->
+<ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+    <li [ngClass]="{disabled:pager.currentPage === 1}">
+        <a (click)="setPage(1)"><span class="glyphicon glyphicon-step-forward"></span></a>
+    </li>
+    <li [ngClass]="{disabled:pager.currentPage === 1}">
+        <a (click)="setPage(pager.currentPage - 1)"><span class="glyphicon glyphicon-triangle-right"></span></a>
+    </li>
+    <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+        <a (click)="setPage(page)">{{page}}</a>
+    </li>
+    <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+        <a (click)="setPage(pager.currentPage + 1)"><span class="glyphicon glyphicon-triangle-left"></span></a>
+    </li>
+    <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+        <a (click)="setPage(pager.totalPages)"><span class="glyphicon glyphicon-step-backward"></span></a>
+    </li>
+</ul>
+
+<div class="control-panel" *ngIf="pager.pages && pager.pages.length">
+  <div class="pager-metadata"> 
+    <label style="width:130px;">מספר רשומות להצגה: </label>
+    <select [(ngModel)]="form.pageSize" style="width:40px;" (change)="setPage(pager.currentPage)" >
+      <option  *ngFor="let o of pageSize" [ngValue]="o.id">{{o.name}}</option>   
+    </select>
+    <span style="width:270px;" > דף {{pager.currentPage}} מתוך {{pager.totalPages}}. 
+        סה"כ {{pager.totalItems}} רשומות</span>
+  </div>  
+ 
+</div>
+</div>

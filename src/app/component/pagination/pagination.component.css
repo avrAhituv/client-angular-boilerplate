@@ -1,0 +1,15 @@
+.active{
+  background-color: blue;
+  color:white;
+}
+.page-controls{
+  text-align: center;
+  margin: 5px auto;
+}
+.pager-metadata{
+  margin: 5px;
+  padding: 2px 5px;
+}
+.page-controls .pagination{
+  margin: 5px 10px;
+}

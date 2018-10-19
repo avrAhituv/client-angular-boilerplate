@@ -6,6 +6,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MainLayoutComponent } from './component/main-layout/main-layout.component';
 import { SettingsComponent } from './component/settings/settings.component';
+import { ListsComponent } from './component/lists/lists.component';
 
 const appRoutes: Routes = [
   {path: '',                      
@@ -17,7 +18,7 @@ const appRoutes: Routes = [
       component: HomeComponent  
     },
     { path: 'home', component: HomeComponent },
-    { path: 'lists', component: HomeComponent },
+    { path: 'lists', component: ListsComponent },
     { path: 'settings', component: SettingsComponent }  
   ]},
   {

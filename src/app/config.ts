@@ -1,3 +1,3 @@
 export let config = {
-  isProd: false
+  isProd: true
 }

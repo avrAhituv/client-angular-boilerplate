@@ -1,3 +1,4 @@
+import { FilesService } from './services/files.service';
 import { AuthGuard } from './services/auth.guard';
 import { LoginService } from './services/login.service';
 import { NotificationComponent } from './union/notification/notification.component';
@@ -18,6 +19,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { SettingsComponent } from './component/settings/settings.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { from } from 'rxjs/observable/from';
+import { ListService } from './services/list.service';
+import { ListsComponent } from './component/lists/lists.component';
+import { PaginationComponent } from './component/pagination/pagination.component';
+import { PagerService } from './services/PagerService';
 
 
 @NgModule({
@@ -28,7 +33,9 @@ import { from } from 'rxjs/observable/from';
     HomeComponent,
     LoginComponent,
     NotificationComponent,
-    SettingsComponent
+    SettingsComponent,
+    ListsComponent,
+    PaginationComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +46,7 @@ import { from } from 'rxjs/observable/from';
     PapaParseModule,
     ModalModule.forRoot()
   ],
-  providers: [NotificationService,LoginService, AuthGuard],
+  providers: [NotificationService,LoginService, AuthGuard,ListService,FilesService,PagerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

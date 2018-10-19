@@ -1,0 +1,28 @@
+.page{
+    padding: 10px 25px;
+}
+.list-group-item{
+    padding: 2px 5px;
+    cursor: pointer;
+}
+.csv-file-chooser-section {
+    padding: 10px;
+    margin: 5%;
+    text-align: center;
+  }
+  
+  .csv-result-table {
+    margin: 5%;
+  }
+  
+  table, th, td {
+     padding: 3px 10px;
+  }
+  .import-csv-section{
+    padding: 2px 15px 5px 0;
+  }
+  input.search{
+    width: 20%;
+    margin: 0 20px;
+    background: #fafafa;
+  }

@@ -1,0 +1,183 @@
+<section class="page">
+    <section class="row import-csv-section">
+   
+        <button type="button" class="btn btn-primary" (click)="openModal(template)">יצירת רשימה חדשה מקובץ CSV</button> 
+        <button type="button" class="btn btn-primary" (click)="openModal2(updateListTmpl)">עדכון רשימה קיימת מקובץ CSV</button> 
+        <input *ngIf="originalMembers && originalMembers.length" [(ngModel)]="searchVal"
+        (keyup)="search()"
+        class="form-control no-print search pull-left"
+        placeholder=" חיפוש... "/>
+       
+        <ng-template #template>
+            <div class="modal-header">
+                <button type="button" class="close pull-left" aria-label="Close" (click)="modalRef.hide()">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+              <h4 class="modal-title">יצירת רשימת תפוצה חדשה</h4>           
+            </div>
+            <div class="modal-body">
+              <div class="row col-sm-12">
+                <form class="form-horizontal">                   
+                  <div class="form-group">
+                      <label class="col-sm-3 control-label" for="groupName">שם</label>
+                      <div class="col-sm-7">
+                        <input class="form-control" type="text"  name="groupName" [(ngModel)]="form.groupName"  />
+                      </div>
+                  </div>  
+                  <div class="form-group">
+                    <label class="col-sm-3 control-label" for="nameUrl">שם קצר באנגלית - ייחודי</label>
+                    <div class="col-sm-7">
+                      <input class="form-control" type="text"  name="nameUrl" [(ngModel)]="form.nameUrl"  />
+                    </div>
+                </div>  
+                <div class="form-group">
+                  <label class="col-sm-3 control-label" for="description">תיאור </label>
+                  <div class="col-sm-7">
+                    <input class="form-control" type="text"  name="description" [(ngModel)]="form.description"  />
+                  </div>
+              </div>
+              <div class="form-group csv-file-chooser-section">
+                  <input type="file" #fileImportInput name="File Upload" id="txtFileUpload" name="file"
+                   (change)="fileChangeListener($event)" accept=".csv" />                
+                </div>          
+                </form>
+              </div> 
+              <div  *ngIf="csvRecords && csvRecords.length" class="csv-result-table">
+                <h5>תוכן הקובץ</h5>
+                  <table class="table table-bordered table-condensed">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th *ngFor="let col of fileHeaders">{{col}}</th>      
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let csvData of csvRecords;let i = index;">
+                        <td>{{i+1}}</td>
+                        <td *ngFor="let col of fileHeaders;let y = index">
+                          <span>{{csvData[y]}}</span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>          
+            
+            </div>
+            <div class="modal-footer">
+                <button type="button"  class="btn btn-danger pull-left" aria-label="Close" (click)="modalRef.hide()">
+                  <span class="glyphicon glyphicon-remove"></span>
+                    ביטול</button>
+                <button type="button"  class="btn btn-primary pull-left" (click)="import()">
+                    <span class="glyphicon glyphicon-ok"></span>
+                   ייבוא רשימה                
+                </button>         
+            </div>
+          </ng-template>
+          <ng-template #updateListTmpl>
+              <div class="modal-header">
+                  <button type="button" class="close pull-left" aria-label="Close" (click)="modalRef.hide()">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                <h4 class="modal-title">עדכון רשימה קיימת</h4>           
+              </div>
+              <div class="modal-body">
+                <div class="row col-sm-12">
+                  <form class="form-horizontal">
+                      <div class="form-group">
+                          <label  class="col-sm-3 control-label" for="select-group-list">בחר רשימת תפוצה</label>
+                          <div  class="col-sm-7">
+                            <select *ngIf="selectList && selectList.length" name="select-group-list" [(ngModel)]="updateForm.group" class="col-sm-6 form-control" >
+                              <option *ngFor="let o of selectList" [ngValue]="o.id">{{o.name}}</option> 
+                            </select>
+                          </div>        
+                      </div>
+                      <div class="form-group csv-file-chooser-section">
+                          <input type="file" #fileImportInput name="File Upload" id="txtFileUpload" name="file"
+                           (change)="fileChangeListener($event)" accept=".csv" />                
+                        </div>
+                  </form>
+                </div> 
+                <div  *ngIf="csvRecords && csvRecords.length" class="csv-result-table">
+                  <h5>תוכן הקובץ</h5>
+                    <table class="table table-bordered table-condensed">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th *ngFor="let col of fileHeaders">{{col}}</th>      
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let csvData of csvRecords;let i = index;">
+                          <td>{{i+1}}</td>
+                          <td *ngFor="let col of fileHeaders;let y = index">
+                            <span>{{csvData[y]}}</span>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>          
+              
+              </div>
+              <div class="modal-footer">
+                  <button type="button"  class="btn btn-danger pull-left" aria-label="Close" (click)="modalRef.hide()">
+                    <span class="glyphicon glyphicon-remove"></span>
+                      ביטול</button>
+                  <button type="button"  class="btn btn-primary pull-left" (click)="updateList()">
+                      <span class="glyphicon glyphicon-ok"></span>
+                  עדכון רשימה מקובץ             
+                  </button>         
+              </div>
+            </ng-template>
+      </section>
+      <div class="row" *ngIf="!allLists || !allLists.length">
+          <h4>לא קיימות רשימות תפוצה.</h4>
+      </div>
+  <div class="row" *ngIf="allLists && allLists.length">
+    <ul class="col-md-2 col-sm-3 list-group">
+      <div class="list-group-item" *ngFor="let item of allLists" (click)="selectedList( item)">
+        <button class="btn btn-danger btn-xs pull-left" title="מחיקת קבוצה" type="button" (click)="removeList($event,item)">          
+          <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>          
+        </button> 
+        <h5>{{item.name}}</h5>
+        <p>
+          תיאור: {{item.description}} <br/>
+          כתובת לשליחה: {{item.address}}
+        </p>
+      </div>
+    </ul>
+    <div class="col-sm-9">
+      <div *ngIf="selected">
+        <div *ngIf="loading">טוען נתונים.. נא להמתין..</div>
+        <div *ngIf="!loading">
+            <table class="table table-condensed">
+                <thead>
+                  <tr>                  
+                    <th *ngFor="let col of headers">{{col.title}}</th>      
+                  </tr>
+                </thead>
+                <tbody *ngIf="!allMembers.length">
+                    <tr>
+                      <td>לא נמצאו נתונים.</td>
+                    </tr>
+                    </tbody>
+                <tbody *ngIf="allMembers.length"  [hidden]="!pageData || !pageData.length">
+                  <tr *ngFor="let member of pageData;" >                   
+                    <td *ngFor="let col of headers">
+                      <span *ngIf="col.key!=='vars'">{{member[col.key]}}</span>
+                      <span *ngIf="col.key==='vars'">{{col.renderer(member[col.key])}}</span>                   
+                    </td>
+                  </tr>
+                </tbody>
+              </table>      
+              <app-pagination [allItems]="allMembers" [isRefersh]="isDataChange" (Paged)="onPagination($event)"></app-pagination>               
+              <button type="button" (click)="loadAllMembers()"
+               class="btn btn-default btn-sm" *ngIf="selected && selected.members_count > contentSize">טען עוד</button>
+               
+        </div>
+        
+         
+      </div>
+    </div>
+  </div>
+ 
+</section>
